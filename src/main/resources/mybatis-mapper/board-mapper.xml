@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hello.itemservice.domain.board.BoardRepository">
+
+    <select id="select" resultType="Item">
+        select *
+        from example
+<!--        <where>-->
+<!--            <if test="platform != null and platform != ''">-->
+<!--                and platform = #{platform}-->
+<!--            </if>-->
+<!--            <if test="userId != null and userId != ''">-->
+<!--                and user_id = #{userId}-->
+<!--            </if>-->
+<!--            <if test="isBroadcasting != null and isBroadcasting != ''">-->
+<!--                and is_broadcasting = #{isBroadcasting}-->
+<!--            </if>-->
+<!--            <if test="isCollecting != null and isCollecting != ''">-->
+<!--                and is_collecting = #{isCollecting}-->
+<!--            </if>-->
+<!--            <if test="doCollect != null and doCollect != ''">-->
+<!--                and do_collect = #{doCollect}-->
+<!--            </if>-->
+<!--        </where>;-->
+    </select>
+<!--    <insert id="insert" parameterType="Broadcast">-->
+<!--        insert into game.broadcast-->
+<!--        (platform, user_id, last_broadcasting_ts, is_broadcasting, is_collecting, do_collect)-->
+<!--        values (#{platform}, #{userId}, #{lastBroadcastingTs}, #{isBroadcasting}, false, true)-->
+<!--            on conflict (platform, user_id) do nothing;-->
+<!--    </insert>-->
+
+<!--    <update id="upsert" parameterType="Broadcast">-->
+<!--        insert into game.broadcast-->
+<!--        (platform, user_id, last_broadcasting_ts, is_broadcasting, is_collecting, do_collect)-->
+<!--        values (#{platform}, #{userId}, #{lastBroadcastingTs}, true, true, true)-->
+<!--            on conflict (platform, user_id)-->
+<!--      do update-->
+<!--                         set last_broadcasting_ts = now()-->
+<!--                         , is_broadcasting      = #{isBroadcasting}-->
+<!--                         , is_collecting        = #{isCollecting}-->
+<!--                         , do_collect           = #{doCollect}-->
+<!--         where game.broadcast.platform = #{platform}-->
+<!--           and game.broadcast.user_id = #{userId};-->
+<!--    </update>-->
+
+<!--    <update id="finish" parameterType="Broadcast">-->
+<!--        update game.broadcast-->
+<!--        set is_broadcasting = false-->
+<!--        , is_collecting = false-->
+<!--        where is_broadcasting = true-->
+<!--        and is_collecting = true-->
+<!--        <if test="userId != null and userId != ''">-->
+<!--            and platform = #{platform}-->
+<!--            and user_id = #{userId}-->
+<!--        </if>;-->
+<!--    </update>-->
+</mapper>

@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/example
+    hikari:
+      username: root
+      password: a1234
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: hello.itemservice.domain.item
+  mapper-locations: mybatis-mapper/*-mapper.xml
