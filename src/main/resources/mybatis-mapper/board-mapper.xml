@@ -4,57 +4,65 @@
 
 <mapper namespace="hello.itemservice.domain.board.BoardRepository">
 
-    <select id="select" resultType="Item">
+    <select id="select" resultType="Item" parameterType="Item">
         select *
         from example
-<!--        <where>-->
-<!--            <if test="platform != null and platform != ''">-->
-<!--                and platform = #{platform}-->
-<!--            </if>-->
-<!--            <if test="userId != null and userId != ''">-->
-<!--                and user_id = #{userId}-->
-<!--            </if>-->
-<!--            <if test="isBroadcasting != null and isBroadcasting != ''">-->
-<!--                and is_broadcasting = #{isBroadcasting}-->
-<!--            </if>-->
-<!--            <if test="isCollecting != null and isCollecting != ''">-->
-<!--                and is_collecting = #{isCollecting}-->
-<!--            </if>-->
-<!--            <if test="doCollect != null and doCollect != ''">-->
-<!--                and do_collect = #{doCollect}-->
-<!--            </if>-->
-<!--        </where>;-->
     </select>
-<!--    <insert id="insert" parameterType="Broadcast">-->
-<!--        insert into game.broadcast-->
-<!--        (platform, user_id, last_broadcasting_ts, is_broadcasting, is_collecting, do_collect)-->
-<!--        values (#{platform}, #{userId}, #{lastBroadcastingTs}, #{isBroadcasting}, false, true)-->
-<!--            on conflict (platform, user_id) do nothing;-->
-<!--    </insert>-->
 
-<!--    <update id="upsert" parameterType="Broadcast">-->
-<!--        insert into game.broadcast-->
-<!--        (platform, user_id, last_broadcasting_ts, is_broadcasting, is_collecting, do_collect)-->
-<!--        values (#{platform}, #{userId}, #{lastBroadcastingTs}, true, true, true)-->
-<!--            on conflict (platform, user_id)-->
-<!--      do update-->
-<!--                         set last_broadcasting_ts = now()-->
-<!--                         , is_broadcasting      = #{isBroadcasting}-->
-<!--                         , is_collecting        = #{isCollecting}-->
-<!--                         , do_collect           = #{doCollect}-->
-<!--         where game.broadcast.platform = #{platform}-->
-<!--           and game.broadcast.user_id = #{userId};-->
-<!--    </update>-->
+    <select id="selectById" resultType="Item" parameterType="Item">
+        select *
+        from example
+        where id = #{id}
+    </select>
 
-<!--    <update id="finish" parameterType="Broadcast">-->
-<!--        update game.broadcast-->
-<!--        set is_broadcasting = false-->
-<!--        , is_collecting = false-->
-<!--        where is_broadcasting = true-->
-<!--        and is_collecting = true-->
-<!--        <if test="userId != null and userId != ''">-->
-<!--            and platform = #{platform}-->
-<!--            and user_id = #{userId}-->
-<!--        </if>;-->
-<!--    </update>-->
+    <insert id="insert">
+        insert into example
+            (item_name, contents, customer)
+        values (#{itemName}, #{contents}, #{customer})
+    </insert>
+    <update id="update">
+        update example
+        set item_name = #{itemName}
+          , contents  = #{contents}
+          , customer  = #{customer}
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete
+        from example
+        where id = #{id};
+    </delete>
+    <!--    <insert id="insert" parameterType="Broadcast">-->
+    <!--        insert into game.broadcast-->
+    <!--        (platform, user_id, last_broadcasting_ts, is_broadcasting, is_collecting, do_collect)-->
+    <!--        values (#{platform}, #{userId}, #{lastBroadcastingTs}, #{isBroadcasting}, false, true)-->
+    <!--            on conflict (platform, user_id) do nothing;-->
+    <!--    </insert>-->
+
+    <!--    <update id="upsert" parameterType="Broadcast">-->
+    <!--        insert into game.broadcast-->
+    <!--        (platform, user_id, last_broadcasting_ts, is_broadcasting, is_collecting, do_collect)-->
+    <!--        values (#{platform}, #{userId}, #{lastBroadcastingTs}, true, true, true)-->
+    <!--            on conflict (platform, user_id)-->
+    <!--      do update-->
+    <!--                         set last_broadcasting_ts = now()-->
+    <!--                         , is_broadcasting      = #{isBroadcasting}-->
+    <!--                         , is_collecting        = #{isCollecting}-->
+    <!--                         , do_collect           = #{doCollect}-->
+    <!--         where game.broadcast.platform = #{platform}-->
+    <!--           and game.broadcast.user_id = #{userId};-->
+    <!--    </update>-->
+
+    <!--    <update id="finish" parameterType="Broadcast">-->
+    <!--        update game.broadcast-->
+    <!--        set is_broadcasting = false-->
+    <!--        , is_collecting = false-->
+    <!--        where is_broadcasting = true-->
+    <!--        and is_collecting = true-->
+    <!--        <if test="userId != null and userId != ''">-->
+    <!--            and platform = #{platform}-->
+    <!--            and user_id = #{userId}-->
+    <!--        </if>;-->
+    <!--    </update>-->
 </mapper>

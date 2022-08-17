@@ -8,4 +8,12 @@ import java.util.List;
 @Mapper
 public interface BoardRepository {
     List<Item> select();
+
+    List<Item> selectById();
+
+    List<Item> insert();
+
+    List<Item> upsert();
+
+    List<Item> delete();
 }
